@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #64b3f4, #c2e59c);
+}
+
+.logo img {
+    width: 370px;
+    padding-right: 10px;
+    margin-bottom: 20px;
+}
+
+.form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.title-main {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.hero-image img {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.form-section h1 {
+    font-size: 23px;
+    margin-bottom: 15px;
+    color: #000000;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="submit"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    background-color: #3d8bca;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #27679c;
+}
+
+.infobox {
+    margin-top: 15px;
+}
+
+.infobox a {
+    color: #337bb6;
+    font-weight:550;
+    text-decoration: none;
+}
+
+.infobox a:hover {
+    text-decoration: underline;
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+    .form-container {
+        width: 90%;
+    }
+}

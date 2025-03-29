@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Gastos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> <!-- gera doc pdf no navegador -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.27/jspdf.plugin.autotable.min.js"></script> <!-- cria tabela no pdf gerado -->
+</head>
+<body>
+    <img src="logo.png" alt="Gerenciador de Gastos" id="logo">
+    
+    <div class="container">
+        <!-- Form de Renda Familiar e Adicionar Gastos -->
+        <div class="coluna">
+            <h2>Renda Familiar (R$)</h2>
+            <label for="renda-familiar"></label>
+            <input type="number" id="renda-familiar" step="0.01" required>
+            <button id="adicionar-renda">Adicionar renda</button> <br><br>
+
+            <h2>Adicionar Gastos</h2>
+            <form id="form-gasto">
+                <label for="descricao">Descrição:</label>
+                <input type="text" id="descricao" required>
+
+                <label for="valor">Valor (R$):</label>
+                <input type="number" id="valor" step="0.01" required>
+
+                <label for="categoria">Categoria:</label>
+                <select id="categoria">
+                    <option value="Lazer">Lazer</option>
+                    <option value="Alimentação">Alimentação</option>
+                    <option value="Serviços Digitais">Serviços Digitais</option>
+                    <option value="Necessidades">Necessidades</option>
+                    <option value="Transporte">Transporte</option>
+                    <option value="Moradia">Moradia</option>
+                    <option value="Educação">Educação</option>
+                </select>
+
+                <label for="metodo-pagamento">Método de Pagamento:</label>
+                <select id="metodo-pagamento">
+                    <option value="Dinheiro">Dinheiro</option>
+                    <option value="Crédito">Crédito</option>
+                    <option value="Débito">Débito</option>
+                    <option value="Pix">Pix</option>
+                    <option value="Boleto">Boleto</option>
+                </select>
+
+                <label for="data">Data:</label>
+                <input type="date" id="data" required>
+
+                <button type="submit">Adicionar</button> <br>
+            </form>
+
+            <!-- Filtro por Data -->
+             <h2>Filtro de Gastos</h2>
+            <label for="data-inicial" style="font-weight: 500;">Data Inicial:</label>
+            <input type="date" id="data-inicial">
+
+            <label for="data-final" style="font-weight: 500;">Data Final:</label>
+            <input type="date" id="data-final">
+
+            <button id="filtrar-gastos">Filtrar</button>
+            <button id="resetar-filtro">Resetar</button> <br><br>
+
+            <!-- Lista de Gastos -->
+            <h2>Lista de Gastos</h2>
+            <ul id="lista-gastos"></ul>
+        </div>
+
+        <!-- Relatório e Gráfico -->
+        <div class="coluna" style="width: 605px; height: 900px;">
+            <h2>Relatório Financeiro</h2>
+            <div id="relatorio"></div>
+            <div id="resumo-total">
+                <p>Total Gasto: <span id="total-gasto"></span></p>
+                <p>Total Percentual: <span id="total-percentual"></span></p>
+            </div>
+            <br>
+            <button id="exportar-relatorio">Download Relatório</button> <br>
+            
+            <h2>Gráfico de Gastos</h2>
+            <canvas id="grafico-gastos" width="200" height="200"></canvas>
+        </div>
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- cria o gráfico pizza no navegador -->
+    <script src="script.js"></script>
+</body>
+</html>

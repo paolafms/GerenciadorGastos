@@ -1,0 +1,229 @@
+* {
+    box-sizing: border-box; /*Previne que os elem cresçam + do que devem */
+}
+
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #c2e59c, #64b3f4);
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+#logo{ /*Tam da logo Gerenciador de Gastos */
+    width: 780px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.coluna {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 45%;
+    margin: 10px;
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+form input, form select, form button {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #8dd83c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #aceb6a;
+}
+
+#lista-gastos{
+    font-weight: 500;
+    font-size: small;
+}
+
+ul { /*Lista de gastos */
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li { /*Itens da lista */
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+ul li .descricao { /*Descrição dos gastos add na Lista de Gastos */
+    flex-grow: 1;
+    margin-right: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/*Botões dentro da Lista de Gastos */
+ul li button {
+    position: absolute;
+    right: 10px;
+}
+
+ul li .btn-editar {
+    right: 85px; /*Botão "editar" ficaa esquerda do botão "remover" */
+}
+
+.btn-editar {
+    background-color: rgb(255, 176, 5);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-left: 5px;
+}
+
+.btn-editar:hover {
+    background-color: rgb(252, 195, 74);
+}
+
+ul li .btn-remover {
+    right: 5px; /*Botão "remover" fica mais pra direita */
+}
+
+.btn-remover {
+    background-color: rgb(245, 1, 1);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-left: 5px;
+}
+
+.btn-remover:hover {
+    background-color: rgb(240, 47, 47);
+}
+
+/* Redimensiona o tam em disp móveis*/
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .coluna {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    ul li .descricao { 
+        text-align: center;
+    }
+}
+
+/*Gráfico pizza */
+#grafico-gastos {
+    width: 300px;
+    height: 300px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+#exportar-relatorio { /*Botão*/
+    height: 25px;
+    border-radius: 4px;
+    background-color: #8dd83c;
+}
+
+#exportar-relatorio:hover {
+    background-color: #aceb6a;
+}
+
+/*Estilo das tabelas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+#renda-familiar{ /*Campo p/ escrever */
+    border-width: 1px;
+    border-radius: 4px;
+    width: 90px;
+}
+
+#adicionar-renda{ /*Botão */
+    height: 25px;
+    border-radius: 4px;
+    background-color: #8dd83c;
+}
+
+#adicionar-renda:hover {
+    background-color: #aceb6a;
+}
+
+#filtrar-gastos{ /*Botão */
+    height: 25px;
+    border-radius: 4px;
+    background-color: #3d8bca;
+}
+
+#filtrar-gastos:hover {
+    background-color: #529fdd;
+}
+
+#resetar-filtro{ /*Botão */
+    height: 25px;
+    border-radius: 4px;
+    background-color: #737c78;
+}
+
+#resetar-filtro:hover {
+    background-color: #8b9b95;
+}
+
+/*Total Gasto e Total Percentual da tabela de Relatório Financeiro */
+#resumo-total {
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: right;
+    background-color: #dce5ec;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#resumo-total p { /*Parágrafo */
+    margin: 0;
+    flex: 1;
+    text-align: center;
+}
