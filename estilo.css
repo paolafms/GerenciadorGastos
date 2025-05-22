@@ -52,13 +52,31 @@ form {
     gap: 10px;
 }
 
+/* Estilo unificado para todos os tipos de input */
 input[type="text"],
 input[type="password"],
+input[type="email"],  /* Adicionei o tipo email aqui */
 input[type="submit"] {
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 16px;
+    width: 100%;  /* Garante que todos ocupem 100% da largura */
+}
+
+/* Estilo específico para os campos de texto/senha/email */
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    background-color: #f9f9f9;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+    border-color: #3d8bca;
+    outline: none;
 }
 
 input[type="submit"] {
@@ -66,6 +84,7 @@ input[type="submit"] {
     color: white;
     border: none;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 input[type="submit"]:hover {
@@ -78,7 +97,7 @@ input[type="submit"]:hover {
 
 .infobox a {
     color: #337bb6;
-    font-weight:550;
+    font-weight: 550;
     text-decoration: none;
 }
 
@@ -91,4 +110,34 @@ input[type="submit"]:hover {
     .form-container {
         width: 90%;
     }
+    
+    .logo img {
+        width: 300px;
+    }
+    
+    .hero-image img {
+        width: 180px;
+    }
+}
+
+.message {
+    text-align: center;
+    margin-top: 10px;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+/* Adicione estas classes se quiser estilos diferentes para cada tipo de mensagem */
+.message.error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+.message.success {
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
 }
