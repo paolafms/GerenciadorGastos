@@ -19,17 +19,49 @@
 
         <div class="form-section">
             <h1>Cadastre-se</h1>
-            <form>
-                <input type="text" placeholder="Email" name="email">
-                <input type="password" placeholder="Senha" name="password">
+            <form id="registerForm">
+                <input type="email" placeholder="Email" name="email" id="registerEmail" class="form-input" required>
+                <input type="password" placeholder="Senha" name="password" id="registerPassword" class="form-input" required>
                 <input type="submit" value="Cadastrar">
             </form>
 
             <div class="infobox">
                 <p>Já possui uma conta?<a href="login.html"> Entrar</a></p>
             </div>
+            <p id="registerMessage" style="color: red; text-align: center;"></p>
         </div>
     </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            
+            // Recupera usuários do localStorage
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            
+            // Verifica se o email já está cadastrado
+            const userExists = users.some(u => u.email === email);
+            
+            if (userExists) {
+                document.getElementById('registerMessage').textContent = 'Este email já está cadastrado!';
+            } else {
+                // Adiciona novo usuário
+                users.push({ email, password });
+                localStorage.setItem('users', JSON.stringify(users));
+                
+                // Mostra mensagem de sucesso e redireciona após 1 segundo
+                document.getElementById('registerMessage').textContent = 'Cadastro realizado com sucesso!';
+                document.getElementById('registerMessage').style.color = 'green';
+                
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 1000);
+            }
+        });
+    </script>
 </body>
 
 </html>
