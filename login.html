@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilo.css">
     <title>Login</title>
@@ -20,17 +19,54 @@
 
         <div class="form-section">
             <h1>Login</h1>
-            <form action="index.html" method="get">
-                <input type="text" placeholder="Email" name="email">
-                <input type="password" placeholder="Senha" name="password">
+            <form id="loginForm">
+                <input type="text" placeholder="Email" name="email" id="loginEmail" required>
+                <input type="password" placeholder="Senha" name="password" id="loginPassword" required>
                 <input type="submit" value="Entrar">
             </form>
 
             <div class="infobox">
                 <p>Não possui conta?<a href="register.html"> Cadastre-se</a></p>
             </div>
+            <div id="loginMessage" class="message"></div>
         </div>
     </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const messageElement = document.getElementById('loginMessage');
+            
+            // Recupera usuários do localStorage
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            
+            // Verifica se existe um usuário com esse email e senha
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                // Login bem-sucedido
+                messageElement.textContent = 'Login bem-sucedido! Redirecionando...';
+                messageElement.style.color = 'green';
+                
+                // Redireciona após 2 segundos
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
+            } else {
+                // Login falhou
+                messageElement.textContent = 'Email ou senha incorretos!';
+                messageElement.style.color = 'red';
+                
+                // Remove a mensagem após 2 segundos
+                setTimeout(() => {
+                    messageElement.textContent = '';
+                }, 2000);
+            }
+        });
+    </script>
 </body>
 
 </html>
